@@ -29,7 +29,7 @@ div.note {
 }
 div.stick {
     width: 100px;
-    height:20px;
+    height:25px;
     background-color:aqua;
 }
 
