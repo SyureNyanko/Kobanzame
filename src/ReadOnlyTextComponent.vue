@@ -1,5 +1,5 @@
 <template>
-<text> {{ text }} </text>
+<text> {{text}} </text>
 </template>
 <script>
 export default {

@@ -1,28 +1,30 @@
 <template>
+<span>
+<edit-modal-component v-if="isModalActive">
+  { clickで表示したいmodal_content部分 }
+</edit-modal-component>
 <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 5000 4000" width="5000" height="4000" @mousemove="onDrag">
     <rect @click="triggerDrag" :x="c.x" :y="c.y" :width="c.w" :height="c.dh" class="draggable_area"></rect>
     <rect @click="toggleEdit" :x="c.x" :y="c.y+c.dh" :width="c.w" :height="c.h" class="edit_area"></rect>
-    <span v-bind:is="textArea" :x="c.x" :y="c.y+c.dh+13" :width="c.w" :height="c.h" text="c.text"></span>
+    <read-only-text-component @click="toggleEdit" v-bind:text="text" :x="c.x" :y="c.y+c.dh+13" :width="c.w"></read-only-text-component>
 </svg>
+</span>
 </template>
 
 <script>
 import ReadOnlyTextComponent from './ReadOnlyTextComponent.vue'
-import EditTextComponent from './EditTextComponent.vue'
+import EditModalComponent from './EditModalComponent.vue'
 
 export default {
-    components:{
-        'readOnlyTextComponent': ReadOnlyTextComponent,
-        'editTextComponent': EditTextComponent,
-    },
+    components: { ReadOnlyTextComponent, EditModalComponent },
     data: function(){
         return {
             dragging: false,
             editing: false,
             c : {x: 22, y: 22, w: 100, h: 100, dh: 10},
             initial_offset : {x:100, y:100},
-            text: "Hello World!!!!!!",
-            componentTypes: ['readOnlyTextComponent', 'editTextComponent'],
+            text: 'Hello World!!!!!!',
+            isModalActive: false,
         }
     },
 
@@ -57,33 +59,19 @@ export default {
          // eslint-disable-next-line
          toggleEdit: function(e){
              // eslint-disable-next-line
-             e = e.changedTouches ? e.changedTouches[0] : e 
-             if (!this.editing){
-                 this.editing = true
-                 this.dragging = false
-             } else {
-                 this.stopEdit() // for debug
-             }
+             e = e.changedTouches ? e.changedTouches[0] : e
+             this.isModalActive = !this.isModalActive 
+
          },
          stopEdit: function(){
              //e = e.changedTouches ? e.changedTouches[0] : e
              this.editing = false
          }
-     },
-     computed: {
-         textArea: function(){
-             if(this.editing) {
-                 return this.componentTypes[1]
-             }
-             return this.componentTypes[0]
-         }
-
-     } 
+     }
 }
 </script>
 <style scoped>
 rect.draggable_area{
-  fill: blue;
   opacity: 0.55;
   stroke: #793;
   stroke-width: 1px;
@@ -100,6 +88,7 @@ svg{
     position: absolute;
 }
 div{
+    fill: yellow;
     cursor: pointer;
 }
 </style>
