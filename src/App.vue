@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Hello!</h1>
-    <note></note>
+    <note initialVal="ああ" initialTop="100" initialLeft="100"></note>
   </div>
 </template>
 <script>
