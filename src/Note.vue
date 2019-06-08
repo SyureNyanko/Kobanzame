@@ -49,4 +49,9 @@ div.stick {
     background-color:#cccce3;
 }
 
+div.stick:hover {
+    background-color:#e6e6ff
+;
+}
+
 </style>
