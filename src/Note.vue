@@ -40,13 +40,13 @@ export default {
 <style scoped>
 div.note {
     width: 100px;
-    background-color:aqua;
+    background-color:#9acce3;
     min-height: 100px;
 }
 div.stick {
     width: 100px;
     height:25px;
-    background-color:aqua;
+    background-color:#cccce3;
 }
 
 </style>
