@@ -1,13 +1,13 @@
 <template>
+ <span>
   <div :style="classObject">
-      {{ val }}
-  <div style="position: absolute;" v-drag:header>
+  <div style="position: absolute;" @mousedown="Debug" v-drag:header>
     <div class="stick" id="header"></div>
     <div class="note" contenteditable="true">
-        {{ val }}
     </div>
   </div>
   </div>
+  </span>
 </template>
 
 <script>
@@ -17,17 +17,22 @@ export default {
   directives: {
     drag
   },
-  props: ['initialVal', 'initialTop', 'initialLeft'],
+  props: ['initialTop', 'initialLeft'],
   data: function(){
       return {
           text: 'default',
-          val: this.initialVal,
           classObject: {
               position: 'relative',
-              top: '100px',
-              left: '100px'
+              top: this.initialTop + 'px',
+              left: this.initialLeft + 'px'
           }
-      }
+      } 
+  },
+  methods: {
+      Debug: function(event){
+          // eslint-disable-next-line
+          console.log('(X:' + event.clientX + ', Y:' + event.clientY + ')');
+      } 
   }
 }
 </script>
@@ -41,11 +46,6 @@ div.stick {
     width: 100px;
     height:25px;
     background-color:aqua;
-}
-div.outer {
-    position: relative;
-    top: 90px;
-    left:90px;
 }
 
 </style>
