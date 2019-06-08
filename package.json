@@ -8,7 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@branu-jp/v-drag": "^0.1.0",
+    "@branu-jp/v-drag": "file:../v-drag",
+    "@syurenyanko/v-drag": "file:../v-drag",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vuedraggable": "^2.21.0"

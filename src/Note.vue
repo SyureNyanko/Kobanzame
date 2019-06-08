@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import drag from '@branu-jp/v-drag'
+// import drag from '@branu-jp/v-drag'
+import drag from '@syurenyanko/v-drag'
 
 export default {
   directives: {
