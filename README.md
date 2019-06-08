@@ -1,5 +1,9 @@
 # kobanzame
 
+kobanzame is Stiky-note
+https://syurenyanko.github.io/Kobanzame/
+
+
 ## Project setup
 ```
 yarn install

@@ -1,6 +1,6 @@
 <template>
  <span>
-  <div :style="classObject">
+  <div :style="classObject" class="entire-note">
   <div style="position: absolute;" @mousedown="Debug" v-drag:header>
     <div class="stick" id="header"></div>
     <div class="note" contenteditable="true">
@@ -50,8 +50,10 @@ div.stick {
 }
 
 div.stick:hover {
-    background-color:#e6e6ff
-;
+    background-color:#e6e6ff;
+}
+div.entire-note {
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
 }
 
 </style>
