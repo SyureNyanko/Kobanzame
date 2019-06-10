@@ -670,7 +670,7 @@
 "@branu-jp/v-drag@file:../v-drag":
   version "0.0.10"
   dependencies:
-    "@syurenyanko/v-drag" "file:../../Library/Caches/Yarn/v4/npm-@branu-jp-v-drag-0.0.10-7ab32e2b-079a-46d2-a67d-9640cb1f29ff-1559981637725/node_modules/@branu-jp/v-drag"
+    "@syurenyanko/v-drag" "file:../../Library/Caches/Yarn/v4/npm-@branu-jp-v-drag-0.0.10-8598ca3c-1026-4ac5-8003-a6b884b696fe-1560175763835/node_modules/@branu-jp/v-drag"
     v-drag "^2.1.2"
     vue "^2.5.16"
 
@@ -734,7 +734,7 @@
 "@syurenyanko/v-drag@file:../v-drag":
   version "0.0.10"
   dependencies:
-    "@syurenyanko/v-drag" "file:../../Library/Caches/Yarn/v4/npm-@syurenyanko-v-drag-0.0.10-da879c17-4ae1-44a0-a9a8-1d005fd2ace9-1559981638119/node_modules/@syurenyanko/v-drag"
+    "@syurenyanko/v-drag" "file:../../Library/Caches/Yarn/v4/npm-@syurenyanko-v-drag-0.0.10-d37f2620-608f-43a5-a41e-d2a20a31bb43-1560175763838/node_modules/@syurenyanko/v-drag"
     v-drag "^2.1.2"
     vue "^2.5.16"
 
@@ -7928,6 +7928,11 @@ vue-loader@^15.7.0:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-material@^1.0.0-beta-11:
+  version "1.0.0-beta-11"
+  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-1.0.0-beta-11.tgz#11baf0cdb22a35d35859c619099d6c3cb3cc2cc3"
+  integrity sha512-1+dIVkQafMIA/zNONb7OwGaTjAxaWk/JhUA2/FInQvbArxf1ToKB+yIdeSfzopQ1KICnBTAmk9E0Vdr5p4MWNA==
 
 vue-style-loader@^4.1.0:
   version "4.1.2"

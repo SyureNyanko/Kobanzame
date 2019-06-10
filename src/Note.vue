@@ -40,17 +40,21 @@ export default {
 <style scoped>
 div.note {
     width: 100px;
-    background-color:#9acce3;
+    background-color:#fff176
+
+;
     min-height: 100px;
 }
 div.stick {
     width: 100px;
     height:25px;
-    background-color:#cccce3;
+    background-color:#fff176
+
+;
 }
 
 div.stick:hover {
-    background-color:#e6e6ff;
+    background-color:#cabf45;
 }
 div.entire-note {
     filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));

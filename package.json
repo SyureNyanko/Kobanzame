@@ -13,6 +13,7 @@
     "@syurenyanko/v-drag": "file:../v-drag",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
+    "vue-material": "^1.0.0-beta-11",
     "vuedraggable": "^2.21.0"
   },
   "devDependencies": {
