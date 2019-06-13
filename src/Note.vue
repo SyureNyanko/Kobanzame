@@ -1,7 +1,7 @@
 <template>
  <span>
   <div :style="classObject" class="entire-note">
-  <div style="position: absolute;" @mousedown="Debug" v-drag:header>
+  <div class=notePosition style="position: absolute;" @mousedown="Debug" v-drag:header>
     <div class="stick" id="header"></div>
     <div class="note" contenteditable="true">
     </div>
@@ -11,6 +11,15 @@
 </template>
 
 <script>
+function getAbsolutePosition(elm){
+    const {left, top} = elm.getBoundingClientRect();
+    const {left: bleft, top: btop} = document.body.getBoundingClientRect();
+    var ret = {left: left - bleft + 1, top: top - btop + 1};
+    // eslint-disable-next-line
+    console.log(left, top);
+    return ret;
+}
+
 // import drag from '@branu-jp/v-drag'
 import drag from '@syurenyanko/v-drag'
 
@@ -33,9 +42,15 @@ export default {
       Debug: function(event){
           // eslint-disable-next-line
           console.log('(X:' + event.clientX + ', Y:' + event.clientY + ')');
-      } 
-  }
+      },
+      getPosition: function(){
+              // eslint-disable-next-line
+              console.log(this.$el.getElementsByClassName('notePosition')[0]);
+          return getAbsolutePosition(this.$el.getElementsByClassName('notePosition')[0]);
+      }
+    }
 }
+
 </script>
 <style scoped>
 div.note {

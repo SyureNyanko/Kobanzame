@@ -4,9 +4,12 @@
      <md-button class="md-icon-button md-raised md-primary" @click="addNote">
        <md-icon>add</md-icon>
      </md-button>
+     <md-button class="md-icon-button md-raised md-primary" @click="saveNote">
+       <md-icon>save</md-icon>
+     </md-button>
     </div>
-    <span v-for="item in list" v-bind:key="item.id">
-    <note :initialTop="item.initialTop" :initialLeft="item.initialLeft"></note>
+    <span v-for="(item, index) in list" v-bind:key="index">
+    <note :ref="'note' + index" :initialTop="item.initialTop" :initialLeft="item.initialLeft"></note>
     </span>
   </div>
 </template>
@@ -36,9 +39,17 @@ export default {
       var x = getRandomInt(window.innerHeight - 50) + 25;
       var y = getRandomInt(window.innerWidth);
         this.list.push({initialTop : x, initialLeft: y})
+    },
+    saveNote: function(){
+      for (var i = 0 ; i < Object.keys(this.$refs).length ; i++) {
+        // eslint-disable-next-line
+        console.log(this.$refs['note' + i]['0']);
+         // eslint-disable-next-line
+        console.log(this.$refs['note' + i]['0'].getPosition());
+      }
     }
   }
-};
+}
 </script>
 <style scoped>
 div.control-panel {
