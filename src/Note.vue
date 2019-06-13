@@ -17,7 +17,7 @@
 function getAbsolutePosition(elm){
     const {left, top} = elm.getBoundingClientRect();
     const {left: bleft, top: btop} = document.body.getBoundingClientRect();
-    var ret = {left: left - bleft + 1, top: top - btop + 1};
+    let ret = {left: left - bleft + 1, top: top - btop + 1};
     // eslint-disable-next-line
     console.log(left, top);
     return ret;
@@ -27,8 +27,8 @@ function getAbsolutePosition(elm){
  * Notes Size (except bar)
  */
 function getSizeOfNote(elm){
-    var height = elm.clientHeight;
-    var width = elm.clientWidth;
+    let height = elm.clientHeight;
+    let width = elm.clientWidth;
     return {height: height, width: width}
 }
 
@@ -63,7 +63,7 @@ export default {
           return getSizeOfNote(this.$el.getElementsByClassName('note')[0]);
       },
       getText: function(){
-          return this.$el.getElementsByClassName('note')[0].innerHTML;
+          return {text : this.$el.getElementsByClassName('note')[0].innerHTML};
       }
     }
 }

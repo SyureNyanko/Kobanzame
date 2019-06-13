@@ -26,6 +26,13 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
+function stickyNotesDownload(json_format_var) {
+  let blob = new Blob([JSON.stringify(json_format_var, null, 2)], {type : 'application/json'})
+  let link = document.createElement('a');
+  link.href = window.URL.createObjectURL(blob);
+  link.download = 'note.json';
+  link.click()
+}
 
 export default {
   components: { Note },
@@ -41,16 +48,15 @@ export default {
         this.list.push({initialTop : x, initialLeft: y})
     },
     saveNote: function(){
+      let download_temp = []
       for (var i = 0 ; i < Object.keys(this.$refs).length ; i++) {
-        // eslint-disable-next-line
-        console.log(this.$refs['note' + i]['0']);
-         // eslint-disable-next-line
-        console.log(this.$refs['note' + i]['0'].getPosition());
-        // eslint-disable-next-line
-        console.log(this.$refs['note' + i]['0'].getSize());
-        // eslint-disable-next-line
-        console.log(this.$refs['note' + i]['0'].getText());
+        let position = this.$refs['note' + i]['0'].getPosition();
+        let size = this.$refs['note' + i]['0'].getSize();
+        let text = this.$refs['note' + i]['0'].getText();
+        download_temp.push(Object.assign(text, position, size));
+        
       }
+      stickyNotesDownload(download_temp);
     }
   }
 }
