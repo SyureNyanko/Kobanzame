@@ -46,6 +46,10 @@ export default {
         console.log(this.$refs['note' + i]['0']);
          // eslint-disable-next-line
         console.log(this.$refs['note' + i]['0'].getPosition());
+        // eslint-disable-next-line
+        console.log(this.$refs['note' + i]['0'].getSize());
+        // eslint-disable-next-line
+        console.log(this.$refs['note' + i]['0'].getText());
       }
     }
   }

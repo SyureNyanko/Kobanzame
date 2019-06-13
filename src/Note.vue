@@ -11,6 +11,9 @@
 </template>
 
 <script>
+/**
+ * Use for to acquire NotePositon position
+ */ 
 function getAbsolutePosition(elm){
     const {left, top} = elm.getBoundingClientRect();
     const {left: bleft, top: btop} = document.body.getBoundingClientRect();
@@ -19,6 +22,16 @@ function getAbsolutePosition(elm){
     console.log(left, top);
     return ret;
 }
+
+/**
+ * Notes Size (except bar)
+ */
+function getSizeOfNote(elm){
+    var height = elm.clientHeight;
+    var width = elm.clientWidth;
+    return {height: height, width: width}
+}
+
 
 // import drag from '@branu-jp/v-drag'
 import drag from '@syurenyanko/v-drag'
@@ -44,9 +57,13 @@ export default {
           console.log('(X:' + event.clientX + ', Y:' + event.clientY + ')');
       },
       getPosition: function(){
-              // eslint-disable-next-line
-              console.log(this.$el.getElementsByClassName('notePosition')[0]);
           return getAbsolutePosition(this.$el.getElementsByClassName('notePosition')[0]);
+      },
+      getSize: function(){
+          return getSizeOfNote(this.$el.getElementsByClassName('note')[0]);
+      },
+      getText: function(){
+          return this.$el.getElementsByClassName('note')[0].innerHTML;
       }
     }
 }
