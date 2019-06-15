@@ -4,6 +4,7 @@
   <div class=notePosition style="position: absolute;" @mousedown="Debug" v-drag:header>
     <div class="stick" id="header"></div>
     <div class="note" contenteditable="true">
+        {{ this.text }}
     </div>
   </div>
   </div>
@@ -40,14 +41,15 @@ export default {
   directives: {
     drag
   },
-  props: ['initialTop', 'initialLeft'],
+  props: ['top', 'left', 'width', 'height', 'text', 'id'],
   data: function(){
       return {
-          text: 'default',
           classObject: {
               position: 'relative',
-              top: this.initialTop + 'px',
-              left: this.initialLeft + 'px'
+              top: this.top + 'px',
+              left: this.left + 'px',
+              width: this.width + 'px',
+              height: this.height + 'px'
           }
       } 
   },

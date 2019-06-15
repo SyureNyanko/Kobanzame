@@ -9,11 +9,14 @@
      </md-button>
      <md-button type="submit" class="md-icon-button md-raised md-primary" @click="loadNote">
        <md-icon>open_in_browser</md-icon>
-       <input ref="uploadDom" style="display: none" @change="loadNote" type="file">
+       <input ref="uploadDom" style="display: none" @change="submitNote" type="file" id="file">
+     </md-button>
+     <md-button class="md-icon-button md-raised md-primary" @click="deleteAllNote">
+       <md-icon>delete</md-icon>
      </md-button>
     </div>
     <span v-for="(item, index) in list" v-bind:key="index">
-    <note :ref="'note' + index" :initialTop="item.initialTop" :initialLeft="item.initialLeft"></note>
+    <note :ref="'note' + index" :top="item.top" :left="item.left" :width="item.width" :height="item.height" :text="item.text" :id="index"></note>
     </span>
   </div>
 </template>
@@ -38,6 +41,7 @@ function stickyNotesDownload(json_format_var) {
   link.click()
 }
 
+
 export default {
   components: { Note },
   data: function(){
@@ -49,7 +53,10 @@ export default {
     addNote: function() {
       var x = getRandomInt(window.innerHeight - 50) + 25;
       var y = getRandomInt(window.innerWidth);
-        this.list.push({initialTop : x, initialiLeft: y})
+        this.list.push({top : x, left: y, width: 100, height: 100, text:""})
+    },
+    deleteAllNote: function(){
+       this.list = [];
     },
     saveNote: function(){
       let download_temp = []
@@ -66,9 +73,31 @@ export default {
     },
     loadNote: function() {
       this.$refs.uploadDom.click();
+    },
+    submitNote: function(e){
+      const file = e.target.files[0];
+      var json = [];
+      if (!file) { return false }
+        let reader = new FileReader();
+          reader.onload = (e) => {
+          json = JSON.parse(e.target.result);
+          this.addToSavedList(json);
+        }
+
+      reader.readAsText(file);
+      document.getElementById("file").value = '';
+    },
+    addToSavedList: function(json){
+      this.list = [];
+      for (var item of json) {
+        this.list.push(item);
+      }
+      // eslint-disable-next-line
+      console.log(this.list);
     }
   }
 }
+
 </script>
 <style scoped>
 div.control-panel {
