@@ -7,6 +7,10 @@
      <md-button class="md-icon-button md-raised md-primary" @click="saveNote">
        <md-icon>save</md-icon>
      </md-button>
+     <md-button type="submit" class="md-icon-button md-raised md-primary" @click="loadNote">
+       <md-icon>open_in_browser</md-icon>
+       <input ref="uploadDom" style="display: none" @change="loadNote" type="file">
+     </md-button>
     </div>
     <span v-for="(item, index) in list" v-bind:key="index">
     <note :ref="'note' + index" :initialTop="item.initialTop" :initialLeft="item.initialLeft"></note>
@@ -45,18 +49,23 @@ export default {
     addNote: function() {
       var x = getRandomInt(window.innerHeight - 50) + 25;
       var y = getRandomInt(window.innerWidth);
-        this.list.push({initialTop : x, initialLeft: y})
+        this.list.push({initialTop : x, initialiLeft: y})
     },
     saveNote: function(){
       let download_temp = []
       for (var i = 0 ; i < Object.keys(this.$refs).length ; i++) {
-        let position = this.$refs['note' + i]['0'].getPosition();
-        let size = this.$refs['note' + i]['0'].getSize();
-        let text = this.$refs['note' + i]['0'].getText();
-        download_temp.push(Object.assign(text, position, size));
-        
+        // exclude other refs
+        if(this.$refs['note' + i]) {
+          let position = this.$refs['note' + i]['0'].getPosition();
+          let size = this.$refs['note' + i]['0'].getSize();
+          let text = this.$refs['note' + i]['0'].getText();
+          download_temp.push(Object.assign(text, position, size));
+        }
       }
       stickyNotesDownload(download_temp);
+    },
+    loadNote: function() {
+      this.$refs.uploadDom.click();
     }
   }
 }
