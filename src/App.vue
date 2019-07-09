@@ -62,7 +62,7 @@ export default {
       let download_temp = []
       for (var i = 0 ; i < Object.keys(this.$refs).length ; i++) {
         // exclude other refs
-        if(this.$refs['note' + i]) {
+        if(this.$refs['note' + i] && this.$refs['note' + i]['0']) {
           let position = this.$refs['note' + i]['0'].getPosition();
           let size = this.$refs['note' + i]['0'].getSize();
           let text = this.$refs['note' + i]['0'].getText();

@@ -1,7 +1,7 @@
 <template>
  <span>
   <div :style="classObject" class="entire-note">
-  <div class=notePosition style="position: absolute;" @mousedown="Debug" v-drag:header>
+  <div class=notePosition style="position: absolute;" @mousedown="Debug" v-drag:header >
     <div class="stick" id="header"></div>
     <div class="note" contenteditable="true">
         {{ this.text }}
@@ -45,7 +45,7 @@ export default {
   data: function(){
       return {
           classObject: {
-              position: 'relative',
+              position: 'absolute',
               top: this.top + 'px',
               left: this.left + 'px',
               width: this.width + 'px',
@@ -59,7 +59,9 @@ export default {
           console.log('(X:' + event.clientX + ', Y:' + event.clientY + ')');
       },
       getPosition: function(){
-          return getAbsolutePosition(this.$el.getElementsByClassName('notePosition')[0]);
+        // eslint-disable-next-line
+          console.log(this.$el.getElementsByClassName('notePosition')['0']);
+          return getAbsolutePosition(this.$el.getElementsByClassName('notePosition')['0']);
       },
       getSize: function(){
           return getSizeOfNote(this.$el.getElementsByClassName('note')[0]);
